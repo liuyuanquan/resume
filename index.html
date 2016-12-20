@@ -10,10 +10,67 @@
         <meta name='renderer' content='webkit'>
         <link rel='shortcut icon' href='./build/image/favicon.ico'>
         <link rel='stylesheet' href='./build/css/common.css'>
-        <link rel='stylesheet' href='./build/css/style.css'>
+        <link rel='stylesheet' href='./build/css/jquery.fullPage.min.css'>
+        <link rel='stylesheet' href='./build/css/index.css'>
+        <link rel='stylesheet' href='./build/css/animation.css'>
     </head>
     <body oncontextmenu='return false;'>
-        11111
-        <script src="./build/js/jquery.min.js"></script>
+        <header>
+            <img src='./build/image/logo.png' alt='大白' class='logo'>
+            <ul class='nav'>
+                <li class='red'>
+                    <span>学</span>
+                    <i class='iconfont'>&#xe609;</i>
+                </li>
+                <li>
+                    <span>习</span>
+                    <i class='iconfont'>&#xe60a;</i>
+                </li>
+                <li>
+                    <span>不</span>
+                    <i class='iconfont'>&#xe60b;</i>
+                </li>
+                <li>
+                    <span>止</span>
+                    <i class='iconfont'>&#xe60c;</i>
+                </li>
+            </ul>
+        </header>
+        <div id='resume'>
+            <div id='section1' class='section'>
+                <img src='./build/image/zhuzi.png' class='zhuzi' />
+                <img src='./build/image/meihua.png' class='meihua' />
+                <img src='./build/image/huawen.png' class='huawen' />
+                <img src='./build/image/introduce.png' class='introduce' />
+                <img src='./build/image/yunduo1.png' class='yunduo yunduo1' />
+                <img src='./build/image/yunduo2.png' class='yunduo yunduo2' />
+                <img src='./build/image/yunduo3.png' class='yunduo yunduo3' />
+                <img src='./build/image/yunduo4.png' class='yunduo yunduo4' />
+                <div class='people'></div>
+            </div>
+            <div id='section2' class='section'>
+                <img src='./build/image/qiang.png' class='qiang'>
+                <img src='./build/image/minyan.png' class='minyan'>
+                <img src='./build/image/long.png' class='long'>
+                <img src='./build/image/modian1.png' class='modian modian1'>
+                <img src='./build/image/modian2.png' class='modian modian2'>
+                <img src='./build/image/modian3.png' class='modian modian3'>
+                <img src='./build/image/modian4.png' class='modian modian4'>
+                <img src='./build/image/modian5.png' class='modian modian5'>
+                <div class='info'></div>
+            </div>
+            <div id='section3' class='section'>
+                <img src='./build/image/niao.png' class='niao' />
+                <img src='./build/image/shan.png' class='shan' />
+            </div>
+            <div id='section4' class='section'>
+                <img src='./build/image/zhiyin1.png' class='zhiyin zhiyin1' />
+                <img src='./build/image/zhiyin2.png' class='zhiyin zhiyin2' />
+            </div>
+        </div>
+        <script src='./build/js/jquery.min.js'></script>
+        <script src='./build/js/jquery.fullPage.min.js'></script>
+        <script src='./build/js/requestAnimationFrame.js'></script>
+        <script src='./build/js/index.js'></script>
     </body>
 </html>
