@@ -36,7 +36,7 @@ images = [
 	'./build/image/yunduo4.png',
 	'./build/image/zhiyin1.png',
 	'./build/image/zhiyin2.png',
-	'./build/image/zhuzi111.png'
+	'./build/image/zhuzi.png'
 ];
 
 function download() {
@@ -65,7 +65,7 @@ $.when(download())
 	showResume();
 })
 .fail(function() {
-	
+
 });
 
 function changeFontSize() {
