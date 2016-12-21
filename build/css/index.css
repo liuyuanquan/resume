@@ -8,6 +8,10 @@ html {
   font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
   font-size: 14px;
   color: #222;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 body {
   min-width: 10rem;
@@ -28,6 +32,39 @@ body {
 .section {
   position: relative;
   overflow: hidden;
+}
+.load {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(../image/bg.jpg);
+  z-index: 999;
+}
+.loadtext {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -0.3rem 0 0 -1.025rem;
+}
+.loadtext .best {
+  float: left;
+  color: #815959;
+  font-size: 0.125rem;
+  line-height: 0.18rem;
+  text-align: center;
+}
+.loadtext .percent {
+  float: left;
+  font-size: 0.38333rem;
+  font-weight: 600;
+  color: #f3713e;
+  margin: -0.108333rem 0 0 0.83333rem;
+}
+.loadtext .percent i {
+  font-size: 0.38333rem;
+  color: #aea6a6;
 }
 header .logo {
   position: fixed;
@@ -51,7 +88,7 @@ header .nav {
   transition: left .5s linear, top .5s linear;
   z-index: 10;
 }
-header .nav li {
+header .nav a {
   position: relative;
   width: .75rem;
   height: .78333rem;
@@ -75,6 +112,21 @@ header .nav span {
   color: #fff;
   text-shadow: 0.025rem 0.01667rem 0.04167rem #000000;
   z-index: 3;
+}
+header .music {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  z-index: 10;
+  width: 0.41667rem;
+  height: 0.41667rem;
+  background: url(../image/music.png) center / cover no-repeat;
+  cursor: pointer;
+}
+header .rotate {
+  -webkit-animation: rotate 2s linear infinite paused both;
+     -moz-animation: rotate 2s linear infinite paused both;
+          animation: rotate 2s linear infinite paused both;
 }
 /*section1*/
 .zhuzi {
@@ -140,10 +192,19 @@ header .nav span {
   height: 4.71667rem;
   margin-left: -2.5625rem;
   background: url(../image/people.png) no-repeat left top / cover;
+  -webkit-transform: scale3d(0, 0, 0);
+     -moz-transform: scale3d(0, 0, 0);
+          transform: scale3d(0, 0, 0);
+  opacity: 0;
   z-index: 2;
 }
 .people1 {
   background-position: right top;
+}
+.people2 {
+  -webkit-animation: people2 2s forwards 3s;
+     -moz-animation: people2 2s forwards 3s;
+          animation: people2 2s forwards 3s;
 }
 .huawen {
   position: absolute;
@@ -174,6 +235,7 @@ header .nav span {
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: 3;
   width: 4.94167rem;
 }
 .minyan {
@@ -263,10 +325,117 @@ header .nav span {
      -moz-animation: flipInX 1s both;
           animation: flipInX 1s both;
 }
+.skills {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.skill {
+  display: none;
+}
+.skill-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3.475rem;
+  margin: -2.5rem 0 0 -7.5rem;
+}
+.skill-desc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6.73333rem;
+  margin: -1.66667rem 0 0 -4.83333rem;
+  line-height: 0.416667rem;
+  font-size: 0.26667rem;
+  opacity: 0;
+}
+.skill-pic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 5.33333rem;
+  margin: 0.83333rem 0 0 -3.58333rem;
+}
+.switch-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  font-size: 0;
+  display: inline-block;
+}
+.switch-btn img {
+  width: 1.325rem;
+  vertical-align: middle;
+}
+.prev-btn {
+  margin: 1.66667rem 0 0 -3.75rem;
+}
+.next-btn {
+  margin: 1.66667rem 0 0 0.66667rem;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.bounceIn {
+  -webkit-animation: bounceIn 1.5s forwards;
+     -moz-animation: bounceIn 1.5s forwards;
+          animation: bounceIn 1.5s forwards;
+}
+.fadeIn {
+  -webkit-animation: fadeIn 5s forwards;
+     -moz-animation: fadeIn 5s forwards;
+          animation: fadeIn 5s forwards;
+}
 /*section3*/
+#section3 .title {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  height: .460331rem;
+  line-height: .460331rem;
+  font-size: .35rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  background: url(../image/bg.jpg);
+}
+.title2 {
+  -webkit-animation: title2 1s forwards;
+     -moz-animation: title2 1s forwards;
+          animation: title2 1s forwards;
+}
+.line {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 0;
+  height: 0.01667rem;
+  margin-top: 0.008335rem;
+  background: #333;
+}
+.leftline {
+  left: 0;
+}
+.rightline {
+  right: 0;
+}
+.lineshow {
+  -webkit-animation: lineshow 1s forwards 1s;
+     -moz-animation: lineshow 1s forwards 1s;
+          animation: lineshow 1s forwards 1s;
+}
 .niao {
   position: absolute;
-  left: -0.41667rem;
+  left: 0;
   top: 5%;
   width: 4.40833rem;
   opacity: .8;
@@ -280,9 +449,9 @@ header .nav span {
           transform-origin: 0% 0%;
 }
 .niao2 {
-  -webkit-animation: niao2 16s infinite 1s alternate;
-     -moz-animation: niao2 16s infinite 1s alternate;
-          animation: niao2 16s infinite 1s alternate;
+  -webkit-animation: niao2 16s linear infinite 1s alternate;
+     -moz-animation: niao2 16s linear infinite 1s alternate;
+          animation: niao2 16s linear infinite 1s alternate;
 }
 .shan {
   position: absolute;
@@ -290,11 +459,96 @@ header .nav span {
   bottom: 0;
   width: 9.86667rem;
 }
-/*section3*/
+.works {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+}
+.works li {
+  position: absolute;
+  display: block;
+  left: 120%;
+  -webkit-transform: scale(0);
+     -moz-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+}
+.works li:nth-of-type(1) {
+  left: 50%;
+}
+.works li:nth-of-type(2) {
+  left: 33%;
+}
+.works li:nth-of-type(3) {
+  left: 55%;
+}
+.works li:nth-of-type(4) {
+  left: 77%;
+}
+.works a {
+  display: inline-block;
+  cursor: pointer;
+}
+.works a img {
+  width: 1.99167rem;
+  height: 2.94167rem;
+  vertical-align: middle;
+}
+.works .item-title {
+  width: 1.99167rem;
+  font-size: 0.26667rem;
+  line-height: 0.33333rem;
+}
+.works .item-desc {
+  position: relative;
+  width: 1.99167rem;
+  font-size: 0.12222rem;
+  line-height: 0.23333rem;
+}
+.works .item-desc:after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 20%;
+  height: 2px;
+  background: red;
+  -webkit-transition: width .5s;
+  -moz-transition: width .5s;
+  transition: width .5s;
+  content: '';
+}
+.works .item-desc:hover:after {
+  width: 100%;
+}
+.rollIn1 {
+  -webkit-animation: rollIn1 3s forwards 2s;
+     -moz-animation: rollIn1 3s forwards 2s;
+          animation: rollIn1 3s forwards 2s;
+}
+.rollIn2 {
+  -webkit-animation: rollIn2 3s forwards 5s;
+     -moz-animation: rollIn2 3s forwards 5s;
+          animation: rollIn2 3s forwards 5s;
+}
+.rollIn3 {
+  -webkit-animation: rollIn3 3s forwards 8s;
+     -moz-animation: rollIn3 3s forwards 8s;
+          animation: rollIn3 3s forwards 8s;
+}
+.rollIn4 {
+  -webkit-animation: rollIn4 3s forwards 11s;
+     -moz-animation: rollIn4 3s forwards 11s;
+          animation: rollIn4 3s forwards 11s;
+}
+/*section4*/
 .zhiyin {
   position: absolute;
   left: 10%;
   z-index: 3;
+  -webkit-transform: scale3d(1.5, 1.5, 1);
+     -moz-transform: scale3d(1.5, 1.5, 1);
+          transform: scale3d(1.5, 1.5, 1);
+  opacity: 0;
 }
 .zhiyin1 {
   top: 17%;
@@ -303,4 +557,28 @@ header .nav span {
 .zhiyin2 {
   top: 32%;
   width: 13.24167rem;
+}
+.zhiyin1-show {
+  -webkit-animation: zhiyin-show 1s forwards;
+     -moz-animation: zhiyin-show 1s forwards;
+          animation: zhiyin-show 1s forwards;
+}
+.zhiyin2-show {
+  -webkit-animation: zhiyin-show 1s forwards 1.5s;
+     -moz-animation: zhiyin-show 1s forwards 1.5s;
+          animation: zhiyin-show 1s forwards 1.5s;
+}
+.address {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: translate3d(0, 100%, 0);
+     -moz-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+}
+.slideup {
+  -webkit-animation: slideup 1s forwards 2.5s;
+     -moz-animation: slideup 1s forwards 2.5s;
+          animation: slideup 1s forwards 2.5s;
 }

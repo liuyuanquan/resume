@@ -11,6 +11,7 @@ html {
 	font-family: 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', 'Arial', sans-serif;
 	font-size: 14px;
 	color: #222;
+	user-select: none;
 }
 
 body {
@@ -18,7 +19,6 @@ body {
 	overflow: hidden;
 	background: url(../image/bg.jpg);
 }
-
 .iconfont {
 	font-family: 'iconfont' !important;
     font-size: 16px;
@@ -37,6 +37,40 @@ body {
 	overflow: hidden;
 }
 
+.load {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: url(../image/bg.jpg);
+	z-index: 999;
+}
+
+.loadtext {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -0.3rem 0 0 -1.025rem;
+	.best {
+		float: left;
+		color: #815959;
+		font-size: 0.125rem;
+		line-height: 0.18rem;
+		text-align: center;
+	}
+	.percent {
+		float: left;
+		font-size: 0.38333rem;
+		font-weight: 600;
+		color: #f3713e;
+		margin: -0.108333rem 0 0 .83333rem;
+		i {
+			font-size: 0.38333rem;
+			color: #aea6a6;
+		}
+	}
+}
 header {
 	.logo {
 		position: fixed;
@@ -55,7 +89,7 @@ header {
 		margin-left: -2rem;
 		transition: left .5s linear, top .5s linear;
 		z-index: 10;
-		li {
+		a {
 			position: relative;
 			width: .75rem;
 			height: .78333rem;
@@ -80,6 +114,19 @@ header {
 			text-shadow: 0.025rem 0.01667rem 0.04167rem #000000;
 			z-index: 3;
 		}	
+	}
+	.music {
+		position: absolute;
+		top: 3%;
+		right: 3%;
+		z-index: 10;
+		width: 0.41667rem;
+		height: 0.41667rem;
+		background: url(../image/music.png) center / cover no-repeat;
+		cursor: pointer;
+	}
+	.rotate {
+		animation: rotate 2s linear infinite paused both;
 	}
 }
 
@@ -139,10 +186,15 @@ header {
 	height: 4.71667rem;
 	margin-left: -2.5625rem;
 	background: url(../image/people.png) no-repeat left top / cover;
+	transform: scale3d(0, 0, 0);
+	opacity: 0;
 	z-index: 2;
 }
 .people1 {
 	background-position: right top;
+}
+.people2 {
+	animation: people2 2s forwards 3s;
 }
 .huawen {
 	position: absolute;
@@ -170,6 +222,7 @@ header {
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	z-index: 3;
 	width: 4.94167rem;
 }
 .minyan {
@@ -242,11 +295,110 @@ header {
 .flipInY {
 	animation: flipInX 1s both;
 }
+.skills {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.skill {
+	display: none;
+}
+.skill-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 3.475rem;
+	margin: -2.5rem 0 0 -7.5rem;
+}
+.skill-desc {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 6.73333rem;
+	margin: -1.66667rem 0 0 -4.83333rem;
+	line-height: 0.416667rem;
+	font-size: 0.26667rem;
+	opacity: 0;
+}
+.skill-pic {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	width: 5.33333rem;
+	margin: 0.83333rem 0 0 -3.58333rem;
+}
+.switch-btn {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	font-size: 0;
+	display: inline-block;
+	img {
+		width: 1.325rem;
+		vertical-align: middle;
+	}
+}
+.prev-btn {
+	margin: 1.66667rem 0 0 -3.75rem;
+}
+.next-btn {
+	margin: 1.66667rem 0 0 0.66667rem;
+}
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+.bounceIn {
+	animation: bounceIn 1.5s forwards;
+}
+.fadeIn {
+	animation: fadeIn 5s forwards;
+}
 
 /*section3*/
+#section3 .title {
+	position: absolute;
+	top: 1rem;
+	left: 0;
+	width: 100%;
+	height: .460331rem;
+	line-height: .460331rem;
+	font-size: .35rem;
+	font-weight: 600;
+	text-align: center;
+	opacity: 0;
+	background: url(../image/bg.jpg);
+}
+.title2 {
+	animation: title2 1s forwards;
+}
+.line {
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 0;
+	height: 0.01667rem;
+	margin-top: 0.008335rem;
+	background: #333;
+}
+.leftline {
+	left: 0;
+}
+.rightline {
+	right: 0;
+}
+.lineshow {
+	animation: lineshow 1s forwards 1s;
+}
 .niao {
 	position: absolute;
-	left: -0.41667rem;
+	left: 0;
 	top: 5%;
 	width: 4.40833rem;
 	opacity: .8;
@@ -254,7 +406,7 @@ header {
 	transform-origin: 0% 0%;
 }
 .niao2 {
-	animation: niao2 16s infinite 1s alternate;
+	animation: niao2 16s linear infinite 1s alternate;
 }
 .shan {
 	position: absolute;
@@ -262,12 +414,84 @@ header {
 	bottom: 0;
 	width: 9.86667rem;
 }
+.works {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+	li {
+		position: absolute;
+		display: block;
+		left: 120%;
+		transform: scale(0);
+		&:nth-of-type(1) {
+			left: 50%;
+		}
+		&:nth-of-type(2) {
+			left: 33%;
+		}
+		&:nth-of-type(3) {
+			left: 55%;
+		}
+		&:nth-of-type(4) {
+			left: 77%;
+		}
+	}
+	a {
+		display: inline-block;
+		cursor: pointer;
+		img {
+			width: 1.99167rem;
+			height: 2.94167rem;
+			vertical-align: middle;
+		}
+	}
+	.item-title {
+		width: 1.99167rem;
+		font-size: 0.26667rem;
+		line-height: 0.33333rem;
+	}
+	.item-desc {
+		position: relative;
+		width: 1.99167rem;
+		font-size: 0.12222rem;
+		line-height: 0.23333rem;
+		&:after {
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 20%;
+			height: 2px;
+			background: red;
+			transition: width .5s;
+			content: '';
+		}
+		&:hover {
+			&:after {
+				width: 100%;
+			}
+		}
+	}
+}
+.rollIn1 {
+	animation: rollIn1 3s forwards 2s;
+}
+.rollIn2 {
+	animation: rollIn2 3s forwards 5s;
+}
+.rollIn3 {
+	animation: rollIn3 3s forwards 8s;
+}
+.rollIn4 {
+	animation: rollIn4 3s forwards 11s;
+}
 
-/*section3*/
+/*section4*/
 .zhiyin {
 	position: absolute;
 	left: 10%;
 	z-index: 3;
+	transform: scale3d(1.5, 1.5, 1);
+	opacity: 0;
 }
 .zhiyin1 {
 	top: 17%;
@@ -276,4 +500,20 @@ header {
 .zhiyin2 {
 	top: 32%;
 	width: 13.24167rem;
+}
+.zhiyin1-show {
+	animation: zhiyin-show 1s forwards;
+}
+.zhiyin2-show {
+	animation: zhiyin-show 1s forwards 1.5s;
+}
+.address {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	transform: translate3d(0, 100%, 0);
+}
+.slideup {
+	animation: slideup 1s forwards 2.5s;
 }

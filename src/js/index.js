@@ -1,4 +1,72 @@
-var timeId, timeId2;
+var timeId, timeId2, audio = $('#bgmusic').get(0), images, loadNum = 0;
+
+images = [
+	'./build/image/favicon.ico',
+	'./build/image/bg.jpg',
+	'./build/image/address.png',
+	'./build/image/bg.png',
+	'./build/image/html5game.png',
+	'./build/image/huawen.png',
+	'./build/image/info.png',
+	'./build/image/introduce.png',
+	'./build/image/js-pic.png',
+	'./build/image/js-pic.png',
+	'./build/image/js-title.png',
+	'./build/image/left.png',
+	'./build/image/logo.png',
+	'./build/image/long.png',
+	'./build/image/meihua.png',
+	'./build/image/minyan.png',
+	'./build/image/modian1.png',
+	'./build/image/modian2.png',
+	'./build/image/modian3.png',
+	'./build/image/modian4.png',
+	'./build/image/modian5.png',
+	'./build/image/music.png',
+	'./build/image/niao.png',
+	'./build/image/people.png',
+	'./build/image/qiang.png',
+	'./build/image/right.png',
+	'./build/image/shan.png',
+	'./build/image/shan2.png',
+	'./build/image/wx-title.png',
+	'./build/image/yunduo1.png',
+	'./build/image/yunduo2.png',
+	'./build/image/yunduo3.png',
+	'./build/image/yunduo4.png',
+	'./build/image/zhiyin1.png',
+	'./build/image/zhiyin2.png',
+	'./build/image/zhuzi111.png'
+];
+
+function download() {
+	var dtd = $.Deferred();
+	$.each(images, function(index, src){
+		var $img = $('<img />');
+		$img.on({
+			load: function() {
+				++loadNum;
+				if (loadNum < images.length) {
+					$('.percent .num').text(Math.floor(loadNum / images.length * 100));
+				} else {
+					dtd.resolve();
+				}
+			},
+			error: function() {
+				dtd.reject();
+			}
+		});
+		$img.attr('src', src);
+	});
+	return dtd.promise();
+}
+$.when(download())
+.done(function() {
+	showResume();
+})
+.fail(function() {
+	
+});
 
 function changeFontSize() {
 	$('html').css({
@@ -64,82 +132,183 @@ function modianEnd () {
 	clearTimeout(timeId2);
 }
 
-$(window).on('resize orientationchange', changeFontSize);
+function switchImageStart() {
+	$('.skill').eq(0).addClass('show').find('.skill-pic, .skill-title').addClass('bounceIn').siblings('.skill-desc').addClass('fadeIn');
+	var length = $('.skill').length;
+	$('.switch-btn').on('click', function() {
+		var index = $('.skill.show').data('index');
+		var nextIndex = (index + 1) % length;
+		$('.skill').eq(index).removeClass('show');
+		$('.skill').eq(nextIndex).addClass('show').find('.skill-pic, .skill-title').addClass('bounceIn').siblings('.skill-desc').addClass('fadeIn');
+	});
+}
 
-$('.modian').on('animationend', function() {
-	$(this).removeClass('modi');
+function switchImageEnd() {
+	$('.switch-btn').off('click');
+	$('.skill').removeClass('show').find('.skill-pic, .skill-title').removeClass('bounceIn').siblings('.skill-desc').removeClass('fadeIn');
+}
+
+function removeAnimation1() {
+	clearTimeout(timeId);
+	yunduoHide();
+	$('.introduce').removeClass('bounceInup');
+	$('.people').removeClass('people2');
+}
+
+function removeAnimation2() {
+	$('.long').removeClass('long2');
+	$('.info').removeClass('info2');
+	$('.minyan').removeClass('flipInY');
+	modianEnd();
+	switchImageEnd();
+}
+
+function removeAnimation3() {
+	$('.niao').removeClass('niao2');
+	$('.line').removeClass('lineshow');
+	$('.title').removeClass('title2');
+	$('.works .item:nth-of-type(1)').removeClass('rollIn1');
+	$('.works .item:nth-of-type(2)').removeClass('rollIn2');
+	$('.works .item:nth-of-type(3)').removeClass('rollIn3');
+	$('.works .item:nth-of-type(4)').removeClass('rollIn4');
+}
+
+function removeAnimation4() {
+	$('.zhiyin1').removeClass('zhiyin1-show');
+	$('.zhiyin2').removeClass('zhiyin2-show');
+	$('.address').removeClass('slideup');
+}
+
+function addAnimation1(){
+	yunduoShow();
+	$('.people').addClass('people2');
+	$('.introduce').addClass('bounceInup');
+	setTimeout(function() {
+		shakeHead();
+	}, 6000)
+}
+
+function addAnimation2(){
+	$('.long').addClass('long2');
+	$('.info').addClass('info2');
+	$('.minyan').addClass('flipInY');
+	modianStart();
+	switchImageStart();
+}
+
+function addAnimation3(){
+	$('.niao').addClass('niao2');
+	$('.line').addClass('lineshow');
+	$('.title').addClass('title2');
+	$('.works .item:nth-of-type(1)').addClass('rollIn1');
+	$('.works .item:nth-of-type(2)').addClass('rollIn2');
+	$('.works .item:nth-of-type(3)').addClass('rollIn3');
+	$('.works .item:nth-of-type(4)').addClass('rollIn4');
+}
+
+function addAnimation4(){
+	$('.zhiyin1').addClass('zhiyin1-show');
+	$('.zhiyin2').addClass('zhiyin2-show');
+	$('.address').addClass('slideup');
+}
+
+function showResume() {
+	$('.modian').on('animationend', function() {
+		$(this).removeClass('modi');
+	});
+	$('#resume').show().fullpage({
+	 	loopBottom: true,
+	 	css3: true,//是否启用CSS3动画
+	 	verticalCentered: false,//内容是否垂直居中
+	 	resize: false,//字体是否随着窗口缩放而缩放
+	 	scrollingSpeed: 1000,//滚动速度,
+	 	afterLoad: function(anchorLink, index) {
+	 		switch (index) {
+	 			case 1:
+	 				removeAnimation2();
+	 				removeAnimation3();
+	 				removeAnimation4();
+	 				addAnimation1();
+	 				break;
+	 			case 2:
+	 				removeAnimation1();
+	 				removeAnimation3();
+	 				removeAnimation4();
+	 				addAnimation2();
+	 				break;
+	 			case 3:
+	 				removeAnimation1();
+	 				removeAnimation2();
+	 				removeAnimation4();
+	 				addAnimation3();
+	 				break;
+	 			case 4:
+	 				removeAnimation1();
+	 				removeAnimation2();
+	 				removeAnimation3();
+	 				addAnimation4();
+	 				break;
+	 			default:
+	 				break;
+	 		}
+	 	},
+	 	onLeave: function(index, nextIndex, direction) {
+	 		$('.nav a').eq(nextIndex - 1).addClass('red').siblings().removeClass('red');
+	 		if(index === 1) {
+	 			$('.logo').css({
+	 				left: '7%',
+	 				top: '2%'
+	 			});
+	 			$('.nav').css({
+	 				left: '77%',
+	 				top: '2%'
+	 			});
+	 		} 
+	 		if (nextIndex === 1) {
+	 			$('.logo').css({
+	 				left: '50%',
+	 				top: '1%'
+	 			});
+	 			$('.nav').css({
+	 				left: '50%',
+	 				top: '10%'
+	 			});
+	 		}
+	 	}
+	});
+}
+
+$('img').attr('draggable', false).on('dragstart', function(e){
+	e.preventDefault(0);
 });
 
-$('#resume').fullpage({
- 	loopBottom: false,
- 	css3: true,//是否启用CSS3动画
- 	verticalCentered: false,//内容是否垂直居中
- 	resize: false,//字体是否随着窗口缩放而缩放
- 	scrollingSpeed: 1000,//滚动速度
- 	afterLoad: function(anchorLink, index) {
- 		switch (index) {
- 			case 1:
- 				//清除index2动画	
- 				$('.long').removeClass('long2');
- 				$('.info').removeClass('info2');
- 				$('.minyan').removeClass('flipInY');
- 				modianEnd();
+$('body').on('contextmenu', function(e) {
+	e.preventDefault();
+});
 
- 				//添加index1动画
- 				shakeHead();
- 				yunduoShow();
- 				$('.introduce').addClass('bounceInup');
- 				break;
- 			case 2:
- 				//清除index1动画
- 				clearTimeout(timeId);
- 				yunduoHide();
- 				$('.introduce').removeClass('bounceInup');
- 				//清除index3动画
- 				$('.niao').removeClass('niao2');
+$(window).on({
+	'resize orientationchange': changeFontSize,
+	'keydown': function(e) {
+		e.preventDefault();
+	}
+});
 
- 				//添加index2动画
- 				$('.long').addClass('long2');
- 				$('.info').addClass('info2');
- 				$('.minyan').addClass('flipInY');
- 				modianStart();
- 				break;
- 			case 3:
- 				//清除index2动画
- 				$('.long').removeClass('long2');
- 				$('.info').removeClass('info2');
- 				$('.minyan').removeClass('flipInY');
- 				modianEnd();
- 				//清除index4动画
- 				
- 				//添加index3动画
- 				$('.niao').addClass('niao2');
- 				break;
- 			default:
- 				break;
- 		}
- 	},
- 	onLeave: function(index, nextIndex, direction) {
- 		$('.nav li').eq(nextIndex - 1).addClass('red').siblings().removeClass('red');
- 		if(index === 1) {
- 			$('.logo').css({
- 				left: '7%',
- 				top: '2%'
- 			});
- 			$('.nav').css({
- 				left: '77%',
- 				top: '2%'
- 			});
- 		} 
- 		if (index === 2 && nextIndex === 1) {
- 			$('.logo').css({
- 				left: '50%',
- 				top: '1%'
- 			});
- 			$('.nav').css({
- 				left: '50%',
- 				top: '10%'
- 			});
- 		}
- 	}
+$('.music').on('click', function() {
+	if (audio.paused) {
+		audio.play();
+	} else {
+		audio.pause();
+	}
+});
+
+$(audio).on('playing', function() {
+	$('.music').css({
+		'animation-play-state': 'running'
+	});
+});
+
+$(audio).on('pause', function() {
+	$('.music').css({
+		'animation-play-state': 'paused'
+	});
 });

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset='utf-8'>
-        <title>我的简历</title>
+        <title>前端工程师简历 - 大白</title>
         <meta name='keywords' content=''>
         <meta name='description' content=''>
         <meta name='author' content='刘源泉'>
@@ -11,33 +11,48 @@
         <link rel='shortcut icon' href='./build/image/favicon.ico'>
         <link rel='stylesheet' href='./build/css/common.css'>
         <link rel='stylesheet' href='./build/css/jquery.fullPage.min.css'>
-        <link rel='stylesheet' href='./build/css/index.css'>
         <link rel='stylesheet' href='./build/css/animation.css'>
+        <link rel='stylesheet' href='./build/css/index.css'>
     </head>
-    <body oncontextmenu='return false;'>
-        <header>
+    <body>
+        <div class='load'>
+            <div class='loadtext'>
+                <p class='best'>最佳浏览器效果<br> CHROME / 火狐 / IE11 / Edge </p> 
+                <p class='percent'>
+                    <span class='num'></span>
+                    <i class='iconfont'>&#xe61d;</i>
+                </p>
+            </div>
+        </div>
+        <header style='display: none;'>
             <img src='./build/image/logo.png' alt='大白' class='logo'>
-            <ul class='nav'>
-                <li class='red'>
+            <div class='nav'>
+                <a class='red' href='#page1'>
                     <span>学</span>
                     <i class='iconfont'>&#xe609;</i>
-                </li>
-                <li>
+                </a>
+                <a href='#page2'>
                     <span>习</span>
                     <i class='iconfont'>&#xe60a;</i>
-                </li>
-                <li>
+                </a>
+                <a href='#page3'>
                     <span>不</span>
                     <i class='iconfont'>&#xe60b;</i>
-                </li>
-                <li>
+                </a>
+                <a href='#page4'>
                     <span>止</span>
                     <i class='iconfont'>&#xe60c;</i>
-                </li>
-            </ul>
+                </a>
+            </div>
+            <div class='music rotate'>
+                <audio id='bgmusic' autoplay style='display: none'>
+                    <source src='./build/music/韩磊 - 等待.mp3' type='audio/mp3'>
+                    <source src='./build/music/韩磊 - 向天再借五百年.mp3' type='audio/mp3'>
+                </audio>
+            </div>
         </header>
-        <div id='resume'>
-            <div id='section1' class='section'>
+        <div id='resume' style='display: none;'>
+            <div id='section1' class='section' data-anchor='page1'>
                 <img src='./build/image/zhuzi.png' class='zhuzi' />
                 <img src='./build/image/meihua.png' class='meihua' />
                 <img src='./build/image/huawen.png' class='huawen' />
@@ -48,7 +63,8 @@
                 <img src='./build/image/yunduo4.png' class='yunduo yunduo4' />
                 <div class='people'></div>
             </div>
-            <div id='section2' class='section'>
+            <div id='section2' class='section' data-anchor='page2'>
+                <div class='info'></div>
                 <img src='./build/image/qiang.png' class='qiang'>
                 <img src='./build/image/minyan.png' class='minyan'>
                 <img src='./build/image/long.png' class='long'>
@@ -57,20 +73,98 @@
                 <img src='./build/image/modian3.png' class='modian modian3'>
                 <img src='./build/image/modian4.png' class='modian modian4'>
                 <img src='./build/image/modian5.png' class='modian modian5'>
-                <div class='info'></div>
+                <div class='skills'>
+                    <div class='skill show' data-index='0'>
+                        <img src='./build/image/js-title.png' class='skill-title'/>
+                        <p class='skill-desc'>
+                            掌握jQuery1<br>
+                            掌握原生JS的编程<br>
+                            注重JavaScript性能优化<br>
+                            正在学习ES6和更多前端框架<br>
+                            层出不穷的框架让人兴奋，而不同框架背后的思路却在逐渐统一
+                        </p>
+                        <img src='./build/image/js-pic.png' class='skill-pic' />
+                    </div>
+                    <div class='skill' data-index='1'>
+                        <img src='./build/image/js-title.png' class='skill-title'/>
+                        <p class='skill-desc'>
+                            掌握jQuery2<br>
+                            掌握原生JS的编程<br>
+                            注重JavaScript性能优化<br>
+                            正在学习ES6和更多前端框架<br>
+                            层出不穷的框架让人兴奋，而不同框架背后的思路却在逐渐统一
+                        </p>
+                        <img src='./build/image/js-pic.png' class='skill-pic' />
+                    </div>
+                    <div class='skill' data-index='2'>
+                        <img src='./build/image/js-title.png' class='skill-title'/>
+                        <p class='skill-desc'>
+                            掌握jQuery3<br>
+                            掌握原生JS的编程<br>
+                            注重JavaScript性能优化<br>
+                            正在学习ES6和更多前端框架<br>
+                            层出不穷的框架让人兴奋，而不同框架背后的思路却在逐渐统一
+                        </p>
+                        <img src='./build/image/js-pic.png' class='skill-pic' />
+                    </div>
+                    <div class='skill' data-index='3'>
+                        <img src='./build/image/js-title.png' class='skill-title'/>
+                        <p class='skill-desc'>
+                            掌握jQuery4<br>
+                            掌握原生JS的编程<br>
+                            注重JavaScript性能优化<br>
+                            正在学习ES6和更多前端框架<br>
+                            层出不穷的框架让人兴奋，而不同框架背后的思路却在逐渐统一
+                        </p>
+                        <img src='./build/image/js-pic.png' class='skill-pic' />
+                    </div>
+                    <a href='javascript:;' class='switch-btn prev-btn'>
+                        <img src='./build/image/left.png' >
+                    </a>
+                    <a href='javascript:;' class='switch-btn next-btn'>
+                        <img src='./build/image/right.png' >
+                    </a>
+                </div>
             </div>
-            <div id='section3' class='section'>
+            <div id='section3' class='section' data-anchor='page3'>
+            	<h3 class='title'>
+            		<span class='line leftline'></span>
+            		部分作品
+            		<span class='line rightline'></span>
+            	</h3>
                 <img src='./build/image/niao.png' class='niao' />
                 <img src='./build/image/shan.png' class='shan' />
+                <ul class='works'>
+                	<li class='item'>
+                		<a><img src='./build/image/html5game.png' class='fengmian'/></a>
+                        <p class='item-title'>HTML5小游戏</p>
+                        <p class='item-desc'>基于HTML5开发的一款小游戏基于HTML5开发的一款小游戏</p>
+                	</li>
+                	<li class='item'>
+                        <a><img src='./build/image/html5game.png' class='fengmian'/></a>
+                        <p class='item-title'>HTML5小游戏</p>
+                        <p class='item-desc'>基于HTML5开发的一款小游戏基于HTML5开发的一款小游戏</p>
+                    </li>
+                    <li class='item'>
+                        <a><img src='./build/image/html5game.png' class='fengmian'/></a>
+                        <p class='item-title'>HTML5小游戏</p>
+                        <p class='item-desc'>基于HTML5开发的一款小游戏基于HTML5开发的一款小游戏</p>
+                    </li>
+                    <li class='item'>
+                        <a><img src='./build/image/html5game.png' class='fengmian'/></a>
+                        <p class='item-title'>HTML5小游戏</p>
+                        <p class='item-desc'>基于HTML5开发的一款小游戏基于HTML5开发的一款小游戏</p>
+                    </li>
+                </ul>
             </div>
-            <div id='section4' class='section'>
+            <div id='section4' class='section' data-anchor='page4'>
                 <img src='./build/image/zhiyin1.png' class='zhiyin zhiyin1' />
                 <img src='./build/image/zhiyin2.png' class='zhiyin zhiyin2' />
+                <img src='./build/image/address.png' class='address' />
             </div>
         </div>
         <script src='./build/js/jquery.min.js'></script>
         <script src='./build/js/jquery.fullPage.min.js'></script>
-        <script src='./build/js/requestAnimationFrame.js'></script>
         <script src='./build/js/index.js'></script>
     </body>
 </html>
