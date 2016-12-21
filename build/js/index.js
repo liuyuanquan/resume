@@ -97,21 +97,16 @@
 						dtd.resolve();
 				},
 				error: function() {
-					dtd.reject();
+					//dtd.reject();
 				}
 			});
 			$img.attr('src', src);
 		});
+		setTimeout(function() {
+			dtd.resolve();
+		}, 180000);
 		return dtd.promise();
 	}
-	$.when(download())
-	.done(function() {
-		$('.load').hide();
-		showResume();
-	})
-	.fail(function() {
-
-	});
 
 	function changeFontSize() {
 		$('html').css({
@@ -357,6 +352,24 @@
 		$('.music').css({
 			'animation-play-state': 'paused'
 		});
+	});
+
+	$.when(download())
+	.done(function() {
+		$('.load').
+		animate({
+			'left': '5%',
+		}, 300, 'linear').
+		animate({
+			'left': '-100%',
+			'opacity': 0
+		}, 1000, function() {
+			$(this).remove();
+		});
+		showResume();
+	})
+	.fail(function() {
+		
 	});
 
 
