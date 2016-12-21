@@ -334,24 +334,26 @@
 		}
 	});
 
-	$('.music').on('click', function() {
-		if (audio.paused) {
-			audio.play();
-		} else {
-			audio.pause();
+	$(audio).on({
+		playing: function() {
+			$('.music').css({
+				'animation-play-state': 'running'
+			});
+		},
+		pause: function() {
+			$('.music').css({
+				'animation-play-state': 'paused'
+			});
+		},
+		canplay: function() {
+			$('.music').show().on('click', function() {
+				if (audio.paused) {
+					audio.play();
+				} else {
+					audio.pause();
+				}
+			});
 		}
-	});
-
-	$(audio).on('playing', function() {
-		$('.music').css({
-			'animation-play-state': 'running'
-		});
-	});
-
-	$(audio).on('pause', function() {
-		$('.music').css({
-			'animation-play-state': 'paused'
-		});
 	});
 
 	$.when(download())
