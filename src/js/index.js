@@ -58,7 +58,7 @@ function download() {
 	});
 	setTimeout(function() {
 		dtd.resolve();
-	}, 180000);
+	}, 60000);
 	return dtd.promise();
 }
 
