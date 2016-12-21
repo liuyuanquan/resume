@@ -92,11 +92,9 @@
 			$img.on({
 				load: function() {
 					++loadNum;
-					if (loadNum < images.length) {
-						$('.percent .num').text(Math.floor(loadNum / images.length * 100));
-					} else {
+					$('.percent .num').text(Math.floor(loadNum / images.length * 100));
+					if (loadNum === images.length)
 						dtd.resolve();
-					}
 				},
 				error: function() {
 					dtd.reject();
@@ -108,6 +106,7 @@
 	}
 	$.when(download())
 	.done(function() {
+		$('.load').hide();
 		showResume();
 	})
 	.fail(function() {
@@ -259,6 +258,7 @@
 	}
 
 	function showResume() {
+		$('header').show();
 		$('.modian').on('animationend', function() {
 			$(this).removeClass('modi');
 		});
