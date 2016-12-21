@@ -1,4 +1,4 @@
-var timeId, timeId2, audio = $('#bgmusic').get(0), images, loadNum = 0;
+var timeId, timeId2, audio = $('#bgmusic').get(0), images, loadNum = 0, musicIndex = 0;
 
 images = [
 	'./build/image/favicon.ico',
@@ -288,6 +288,14 @@ $(window).on({
 	}
 });
 
+$('.music').on('click', function() {
+	if (audio.paused) {
+		audio.play();
+	} else {
+		audio.pause();
+	}
+});
+
 $(audio).on({
 	playing: function() {
 		$('.music').css({
@@ -300,13 +308,11 @@ $(audio).on({
 		});
 	},
 	canplay: function() {
-		$('.music').show().on('click', function() {
-			if (audio.paused) {
-				audio.play();
-			} else {
-				audio.pause();
-			}
-		});
+		$('.music').show();
+	},
+	ended: function() {
+		musicIndex = (musicIndex + 1) % $('source').length;
+		audio.src = $('source').eq(musicIndex).attr('src');
 	}
 });
 
